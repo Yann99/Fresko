@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#123d35"><meta name="description" content="Fresko — le chef malin de ton frigo.">
+  <link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png"><link rel="stylesheet" href="styles.css">
+  <title>Fresko — Le chef de ton frigo</title>
+</head>
+<body>
+<header><div class="brand"><img src="./icon.svg" alt="" class="logo"><div><strong>Fresko</strong><small>Le chef de ton frigo</small></div></div><span class="local">Données sur cet appareil</span></header>
+<main>
+  <section class="hero"><div><p class="eyebrow">TON ASSISTANT ANTI-GASPILLAGE</p><h1>Ton frigo,<br><em>toujours malin.</em></h1><p>Garde tes aliments à l’œil et trouve quoi cuisiner avec ce que tu as.</p></div></section>
+  <nav class="tabs" aria-label="Sections"><button class="tab active" data-tab="stock">Mon stock</button><button class="tab" data-tab="recipes">Recettes</button><button class="tab" data-tab="shopping">Courses</button></nav>
+  <section id="stock" class="panel">
+    <div class="section-head"><div><p class="eyebrow">INVENTAIRE</p><h2>Dans mon frigo</h2></div><button id="addOpen" class="primary">＋ Ajouter</button></div>
+    <div class="summary"><div><b id="count">0</b><span>aliments</span></div><div><b id="urgent">0</b><span>à consommer bientôt</span></div></div>
+    <div id="foodList" class="food-list"></div>
+    <p id="empty" class="empty">Ton frigo est encore vide. Ajoute ton premier aliment !</p>
+  </section>
+  <section id="recipes" class="panel hidden"><p class="eyebrow">INSPIRATION</p><h2>Que cuisiner ?</h2><p class="muted">Les recettes intelligentes avec reconnaissance des aliments par IA seront activées lors de la configuration du service IA.</p><button id="recipeBtn" class="primary">Voir les idées avec mon stock</button><div id="recipeResult"></div></section>
+  <section id="shopping" class="panel hidden"><p class="eyebrow">À NE PAS OUBLIER</p><h2>Liste de courses</h2><div class="add-row"><input id="shopInput" placeholder="Ajouter un article…"><button id="shopAdd" class="primary">Ajouter</button></div><div id="shopList"></div></section>
+</main>
+<dialog id="foodDialog"><form method="dialog" id="foodForm"><div class="dialog-head"><h2>Ajouter un aliment</h2><button class="close" value="cancel" aria-label="Fermer">×</button></div>
+<label>Nom de l’aliment<input id="foodName" required placeholder="Ex. tomates"></label>
+<div class="two"><label>Quantité<input id="foodQty" type="number" min="0.1" step="0.1" value="1"></label><label>Unité<select id="foodUnit"><option>pièce(s)</option><option>g</option><option>kg</option><option>ml</option><option>l</option><option>paquet(s)</option></select></label></div>
+<label>Emplacement<select id="foodPlace"><option>Frigo</option><option>Congélateur</option><option>Placard</option></select></label>
+<label>Date de péremption<input id="foodDate" type="date"></label>
+<label class="photo-label">Photo (facultative)<input id="foodPhoto" type="file" accept="image/*" capture="environment"></label>
+<div id="photoPreview"></div><button class="primary full" value="save">Enregistrer l’aliment</button></form></dialog>
+<footer>Fresko · Version 4.1 · Inventaire enregistré localement sur cet appareil.</footer>
+<script src="app.js"></script>
+</body></html>
