@@ -10,4 +10,4 @@ $('#foodList').onclick=e=>{const i=e.target.dataset.remove;if(i!==undefined){foo
 $('#shopAdd').onclick=()=>{const v=$('#shopInput').value.trim();if(v){shops.push(v);localStorage.setItem('fresko-shops',JSON.stringify(shops));$('#shopInput').value='';render()}};
 $('#shopList').onclick=e=>{const i=e.target.dataset.shopremove;if(i!==undefined){shops.splice(Number(i),1);localStorage.setItem('fresko-shops',JSON.stringify(shops));render()}};
 $('#recipeBtn').onclick=()=>{$('#recipeResult').innerHTML=foods.length?'<p class="muted">Ton stock est prêt. La génération de recettes par IA sera disponible après configuration du service IA.</p>':'<p class="muted">Ajoute d’abord quelques aliments à ton stock.</p>'};
-if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));render();
+if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js', {updateViaCache:'none'}).then(reg=>reg.update()).catch(()=>{}));render();
